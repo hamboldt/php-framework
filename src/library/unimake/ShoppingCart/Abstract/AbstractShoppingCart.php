@@ -27,7 +27,7 @@ abstract class AbstractShoppingCart implements IShoppingCart {
       else {
          $quantityNow = $this->products[$product->getID()]->getQuantity();
          $newQuantity = $quantityNow + $product->getQuantity();
-         $this->products[$product->getID()]->setQuantity($quantityNow);
+         $this->products[$product->getID()]->setQuantity($newQuantity);
       }
    }
    
