@@ -15,3 +15,4 @@ require_once $dir . '/src/library/unimake/ShoppingCart/Abstract/AbstractShopping
 require_once $dir . '/src/library/unimake/ShoppingCart/Interfaces/IProduct.php';
 require_once $dir . '/src/library/unimake/ShoppingCart/Abstract/Products/AbstractProduct.php';
 require_once $dir . '/src/library/unimake/ShoppingCart/Products/Product.php';
+require_once $dir . '/src/library/unimake/ShoppingCart/Products/ProductFactory.php';

@@ -15,12 +15,13 @@ class ProductTest extends \PHPUnit_Framework_TestCase {
       $productQuantity = 20;
       $productUnityPrice = 29.90;
       
-      $product = new \Unimake\ShoppingCart\Products\Product();
-      $product->setID($productId);
-      $product->setName($productName);
-      $product->setDescription($productDescription);
-      $product->setQuantity($productQuantity);
-      $product->setUnityPrice($productUnityPrice);
+      $product = \Unimake\ShoppingCart\Products\ProductFactory::createProduct(
+              $productId,
+              $productName,
+              $productDescription,
+              $productQuantity,
+              $productUnityPrice
+       );
       
       $this->assertEquals($product->getID(), $productId);
       $this->assertEquals($product->getName(), $productName);
