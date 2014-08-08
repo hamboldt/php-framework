@@ -21,11 +21,11 @@ class ProductFactory {
     */
    public static function createProduct($id, $name, $description, $quantity, $unityPrice){
       $product = new Product();
-      $product->setID($id);
-      $product->setName($name);
-      $product->setDescription($description);
-      $product->setQuantity($quantity);
-      $product->setUnityPrice($unityPrice);
+      $product->setID((int)$id);
+      $product->setName((string)$name);
+      $product->setDescription((string)$description);
+      $product->setQuantity((int)$quantity);
+      $product->setUnityPrice((float)$unityPrice);
       
       return $product;
    }
