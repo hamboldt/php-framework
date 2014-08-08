@@ -19,7 +19,7 @@ class ProductFactory {
     * @param   float $unityPrice Preço unitário
     * @return  \Unimake\ShoppingCart\Products\Product
     */
-   public function createProduct($id, $name, $description, $quantity, $unityPrice){
+   public static function createProduct($id, $name, $description, $quantity, $unityPrice){
       
       $product = new Product();
       $product->setID($id);
