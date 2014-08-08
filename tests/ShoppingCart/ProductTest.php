@@ -28,6 +28,7 @@ class ProductTest extends \PHPUnit_Framework_TestCase {
       $this->assertEquals($product->getDescription(), $productDescription);
       $this->assertEquals($product->getQuantity(), $productQuantity);
       $this->assertEquals($product->getUnityPrice(), $productUnityPrice);
+      $this->assertEquals($product->getTotalPrice(), $productUnityPrice * $productQuantity);
    }
    
 }

@@ -22,7 +22,13 @@ abstract class AbstractShoppingCart implements IShoppingCart {
     * @param   \Unimake\ShoppingCart\Interfaces\IProduct $product Produto a ser adicionado
     */
    public function addProduct(IProduct $product){
-      $this->products[$product->getID()] = $product;
+      if(!isset($this->products[$product->getID()]))
+         $this->products[$product->getID()] = $product;
+      else {
+         $quantityNow = $this->products[$product->getID()]->getQuantity();
+         $newQuantity = $quantityNow + $product->getQuantity();
+         $this->products[$product->getID()]->setQuantity($quantityNow);
+      }
    }
    
    /**
