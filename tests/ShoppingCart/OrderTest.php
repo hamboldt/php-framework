@@ -20,7 +20,7 @@ class OrderTest extends \PHPUnit_Framework_TestCase {
       $shoppingCart->delProduct(ProductFactory::createProduct(003, 'A', 'B', 1, 10.00));
       
       $order = OrderAdapter::adaptShoppingCart($shoppingCart);
-      $order->setTotalDiscount(10.00);
+      
       
       $this->assertEquals($order->getTotalPrice(), 50.00); 
    }
