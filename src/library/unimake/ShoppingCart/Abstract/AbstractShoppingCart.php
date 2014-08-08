@@ -19,10 +19,18 @@ abstract class AbstractShoppingCart implements IShoppingCart {
    
    /**
     * @brief   Adiciona um produto ao carrinho
-    * @param   IProduct $product Produto a ser adicionado
+    * @param   \Unimake\ShoppingCart\Interfaces\IProduct $product Produto a ser adicionado
     */
    public function addProduct(IProduct $product){
       $this->products[$product->getID()] = $product;
+   }
+   
+   /**
+    * @brief   Remove um produto do carrinho de compras
+    * @param   \Unimake\ShoppingCart\Interfaces\IProduct $product
+    */
+   public function delProduct(IProduct $product){
+      unset($this->products[$product->getID()]);
    }
    
 }

@@ -1,8 +1,11 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+namespace Unimake\ShoppingCart;
 
+/**
+ * @brief   Venda
+ * @author  Lucas A. de Araújo <lucas.andrade@unimake.com.br>
+ */
+class Order extends AbstractShoppingCart {
+   
+}

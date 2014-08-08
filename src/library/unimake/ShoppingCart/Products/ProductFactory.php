@@ -20,7 +20,6 @@ class ProductFactory {
     * @return  \Unimake\ShoppingCart\Products\Product
     */
    public static function createProduct($id, $name, $description, $quantity, $unityPrice){
-      
       $product = new Product();
       $product->setID($id);
       $product->setName($name);
