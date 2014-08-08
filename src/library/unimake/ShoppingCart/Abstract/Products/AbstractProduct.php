@@ -29,7 +29,7 @@ class AbstractProduct implements IProduct {
     * @param   int $id ID do produto
     */
    public function setID($id){
-      $this->id = $id;
+      $this->id = (int)$id;
    }
    
    /**
@@ -45,7 +45,7 @@ class AbstractProduct implements IProduct {
     * @param   string $name Nome do produto
     */
    public function setName($name){
-      $this->name = $name;
+      $this->name = (string)$name;
    }
    
    /**
@@ -61,7 +61,7 @@ class AbstractProduct implements IProduct {
     * @param   string $string Descrição do produto
     */
    public function setDescription($description){
-      $this->description = $description;
+      $this->description = (string)$description;
    }
    
    /**
@@ -77,7 +77,7 @@ class AbstractProduct implements IProduct {
     * @param   type $unityPrice Preço unitário
     */
    public function setUnityPrice($unityPrice){
-      $this->unityPrice = $unityPrice;
+      $this->unityPrice = (float)$unityPrice;
    }
    
    /**
@@ -93,7 +93,7 @@ class AbstractProduct implements IProduct {
     * @param   int $quantity Quantidade do produto
     */
    public function setQuantity($quantity){
-      $this->quantity = $quantity;
+      $this->quantity = (int)$quantity;
    }
    
    /**

@@ -22,4 +22,16 @@ interface IShoppingCart {
     */
    public function delProduct(IProduct $product);
    
+   /**
+    * @brief   Retorna todos os produtos do carrinho
+    * @return  array
+    */
+   public function getAllProducts();
+   
+   /**
+    * @brief   Conta o número de produtos no carrinho
+    * @return  int quantidade de produtos no carrinho
+    */
+   public function count();
+   
 }

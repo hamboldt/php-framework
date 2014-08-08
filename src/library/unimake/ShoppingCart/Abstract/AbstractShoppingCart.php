@@ -39,4 +39,26 @@ abstract class AbstractShoppingCart implements IShoppingCart {
       unset($this->products[$product->getID()]);
    }
    
+   /**
+    * @brief   Retorna todos os produtos do carrinho
+    * @return  array
+    */
+   public function getAllProducts(){
+      return $this->products;
+   }
+   
+   /**
+    * @brief   Conta o número de produtos no carrinho
+    * @return  int quantidade de produtos no carrinho
+    */
+   public function count(){
+      $count = 0;
+      
+      if(count($this->products) > 0)
+         foreach($this->products as $product)
+            $count += $product->getQuantity();
+      
+      return $count;
+   }
+   
 }
