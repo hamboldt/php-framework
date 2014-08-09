@@ -11,6 +11,7 @@ interface IOrder extends IShoppingCart {
    /**
     * @brief   Define o valor do desconto total da compra
     * @param   float $discount Valor total do desconto
+    * @return  void
     */
    public function setTotalDiscount($discount);
    

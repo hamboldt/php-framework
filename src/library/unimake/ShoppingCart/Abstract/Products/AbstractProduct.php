@@ -58,7 +58,7 @@ class AbstractProduct implements IProduct {
    
    /**
     * @brief   Define a descrição do produto
-    * @param   string $string Descrição do produto
+    * @param   string $description Descrição do produto
     */
    public function setDescription($description){
       $this->description = (string)$description;
@@ -66,7 +66,7 @@ class AbstractProduct implements IProduct {
    
    /**
     * @brief   Retorna o preço unitário do produto
-    * @return  float Preço unitário
+    * @return  double Preço unitário
     */
    public function getUnityPrice(){
       return $this->unityPrice;
@@ -74,7 +74,7 @@ class AbstractProduct implements IProduct {
    
    /**
     * @brief   Define o preço unitário do produto
-    * @param   type $unityPrice Preço unitário
+    * @param   double $unityPrice Preço unitário
     */
    public function setUnityPrice($unityPrice){
       $this->unityPrice = (float)$unityPrice;

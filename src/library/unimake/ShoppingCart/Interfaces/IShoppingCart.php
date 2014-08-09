@@ -13,12 +13,14 @@ interface IShoppingCart {
    /**
     * @brief   Adiciona um produto ao carrinho
     * @param   IProduct $product Produto a ser adicionado
+    * @return  void
     */
    public function addProduct(IProduct $product);
    
    /**
     * @brief   Remove um produto do carrinho
     * @param   IProduct $product Produto a ser removido
+    * @return  void
     */
    public function delProduct(IProduct $product);
    

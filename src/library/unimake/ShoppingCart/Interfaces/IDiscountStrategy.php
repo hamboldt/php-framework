@@ -17,6 +17,7 @@ interface IDiscountStrategy {
    /**
     * @brief   Define o valor a ser descontado da compra
     * @param   float $discountValue Valor a ser descontado
+    * @return  void
     */
    public function setDiscountValue($discountValue);
    
@@ -29,6 +30,7 @@ interface IDiscountStrategy {
    /**
     * @brief   Define um percentual de desconto
     * @param   float $discountPercentual Percentual de desconto
+    * @return  void
     */
    public function setDiscountPercentual($discountPercentual);
    

@@ -17,6 +17,7 @@ interface IProduct {
    /**
     * @brief   Define a ID do produto
     * @param   int $id ID do produto
+    * @return  void
     */
    public function setID($id);
    
@@ -29,6 +30,7 @@ interface IProduct {
    /**
     * @brief   Define o nome do produto
     * @param   string $name Nome do produto
+    * @return  void
     */
    public function setName($name);
    
@@ -40,7 +42,8 @@ interface IProduct {
    
    /**
     * @brief   Define a descrição do produto
-    * @param   string $string Descrição do produto
+    * @param   string $description Descrição do produto
+    * @return  void
     */
    public function setDescription($description);
    
@@ -53,6 +56,7 @@ interface IProduct {
    /**
     * @brief   Define o preço unitário do produto
     * @param   type $unityPrice Preço unitário
+    * @return  void
     */
    public function setUnityPrice($unityPrice);
    
@@ -65,6 +69,7 @@ interface IProduct {
    /**
     * @brief   Define a quantidade do produto
     * @param   int $quantity Quantidade do produto
+    * @return  void
     */
    public function setQuantity($quantity);
    

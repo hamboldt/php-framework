@@ -12,6 +12,7 @@ interface IObjectSerializer {
     * @brief   Serializa um objeto e guarda na sessão
     * @param   string $callbackName Nome que será reservado na sessão
     * @param   object $object Objeto que será guardado na sessão
+    * @return  void
     */
    public function serialize($callbackName, $object);
    
