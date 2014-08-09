@@ -1,7 +1,5 @@
 <?php
 
-# blá
-
 $dir = getcwd();
 
 if(!preg_match("/travis/", getcwd())) 
