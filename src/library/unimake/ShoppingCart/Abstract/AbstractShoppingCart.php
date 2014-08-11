@@ -4,61 +4,58 @@ namespace Unimake\ShoppingCart;
 
 use Unimake\ShoppingCart\Interfaces\IShoppingCart;
 use Unimake\ShoppingCart\Interfaces\IProduct;
+use Unimake\Collections\Collection;
 
 /**
  * @brief   Abstração do carrinho de compras
  * @author  Lucas A. de Araújo <lucas.andrade@unimake.com.br
  */
-abstract class AbstractShoppingCart implements IShoppingCart {
+abstract class AbstractShoppingCart extends Collection implements IShoppingCart {
    
    /**
-    * @brief   Array que armazenará os produtos
-    * @var     array
+    * @brief   Adiciona uma produto ao carrinho
+    * @param   int $key Chave do produto
+    * @param   \Unimake\ShoppingCart\Products\Product $item Produto
+    * @return  void
     */
-   protected $products = array();
-   
-   /**
-    * @brief   Adiciona um produto ao carrinho
-    * @param   \Unimake\ShoppingCart\Interfaces\IProduct $product Produto a ser adicionado
-    */
-   public function addProduct(IProduct $product){
-      if(!isset($this->products[$product->getID()]))
-         $this->products[$product->getID()] = $product;
-      else {
-         $quantityNow = $this->products[$product->getID()]->getQuantity();
-         $newQuantity = $quantityNow + $product->getQuantity();
-         $this->products[$product->getID()]->setQuantity($newQuantity);
+   public function addProduct(IProduct $item) {
+      if($this->containsKey($item->getID())){
+         $this->increseProduct($item);
+      } else {
+         $this->add($item->getID(), $item);
       }
    }
    
    /**
-    * @brief   Remove um produto do carrinho de compras
+    * @brief   Remove um produto do carrinho
+    * @param   \Unimake\ShoppingCart\Interfaces\IProduct $item
+    * @return  void
+    */
+   public function delProduct(IProduct $item){
+      $this->remove($item->getID());
+   }
+   
+   /**
+    * @brief   Soma um produto à outro no carrinho
     * @param   \Unimake\ShoppingCart\Interfaces\IProduct $product
+    * @return  void
     */
-   public function delProduct(IProduct $product){
-      unset($this->products[$product->getID()]);
+   protected function increseProduct(IProduct $product){
+      if($this->containsKey($item->getID())){
+         $quantity = $this->get($product->getID())->getQuantity();
+         $quantity += $product->getQuantity();
+         $product->setQuantity($quantity);
+         $this->update($product->getID(), $product);
+      }
    }
    
-   /**
-    * @brief   Retorna todos os produtos do carrinho
-    * @return  array
-    */
-   public function getAllProducts(){
-      return $this->products;
-   }
-   
-   /**
-    * @brief   Conta o número de produtos no carrinho
-    * @return  int quantidade de produtos no carrinho
-    */
    public function count(){
       $count = 0;
       
-      if(count($this->products) > 0)
-         foreach($this->products as $product)
+      if(parent::count() > 0)
+         foreach($this->getAll() as $product)
             $count += $product->getQuantity();
       
       return $count;
    }
-   
 }

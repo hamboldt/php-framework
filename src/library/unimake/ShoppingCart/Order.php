@@ -35,8 +35,10 @@ class Order extends AbstractShoppingCart implements Interfaces\IOrder {
    public function getTotalPrice(){
       $totalPrice = 0;
       
-      foreach($this->getAllProducts() as $product)
+      foreach($this->getAll() as $product){
+         var_dump($product);
          $totalPrice += $product->getTotalPrice();
+      }
       
       return $totalPrice - $this->getTotalDiscount();
    }

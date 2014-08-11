@@ -19,7 +19,7 @@ class OrderAdapter {
       $order = new \Unimake\ShoppingCart\Order();
       
       if($shoppingCart->count() > 0)
-         foreach($shoppingCart->getAllProducts() as $product)
+         foreach($shoppingCart->getAll() as $product)
             $order->addProduct($product);
       
       return $order;
