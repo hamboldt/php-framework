@@ -36,7 +36,6 @@ class Order extends AbstractShoppingCart implements Interfaces\IOrder {
       $totalPrice = 0;
       
       foreach($this->getAll() as $product){
-         var_dump($product);
          $totalPrice += $product->getTotalPrice();
       }
       
