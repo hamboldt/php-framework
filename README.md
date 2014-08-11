@@ -5,4 +5,4 @@ php-framework
 
 Este é um conjunto de bibliotecas criado com o objetivo de prover soluções para problemas genéricos de software mutuamente com a comunidade open-source. Para mais detalhes visite a wiki do projeto.
 
-![](http://i.imgur.com/bOrMh08.png)
+[![](http://i.imgur.com/bOrMh08.png)](https://github.com/Unimake/php-framework/wiki)
