@@ -76,7 +76,7 @@ abstract class AbstractCollection implements ICollection {
    
    /**
     * @brief   Verifica se existe um item armazenado
-    * @param   var $item Item a ser verificado
+    * @param   $item Item a ser verificado
     * @return  bool
     */
    public function containsValue($item){
