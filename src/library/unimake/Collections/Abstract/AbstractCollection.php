@@ -15,7 +15,7 @@ abstract class AbstractCollection implements ICollection {
    /**
     * @brief   Adiciona um item na coleção
     * @param   int $key Chave de índice
-    * @param   var $item Item a ser adicionado
+    * @param   $item Item a ser adicionado
     */
    public function add($key, $item){
       if(!$this->containsKey($key))
@@ -42,7 +42,7 @@ abstract class AbstractCollection implements ICollection {
    /**
     * @brief   Atualiza um valor no índice
     * @param   int $key Chave de índice
-    * @param   var $item Item a ser atualizado
+    * @param   $item Item a ser atualizado
     */
    public function update($key, $item){
       if($this->containsKey($key))
