@@ -14,8 +14,7 @@ abstract class AbstractShoppingCart extends Collection implements IShoppingCart 
    
    /**
     * @brief   Adiciona uma produto ao carrinho
-    * @param   int $key Chave do produto
-    * @param   \Unimake\ShoppingCart\Products\Product $item Produto
+    * @param   \Unimake\ShoppingCart\Products\Product $product Produto
     * @return  void
     */
    public function addProduct(IProduct $product) {
