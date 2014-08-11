@@ -18,11 +18,11 @@ abstract class AbstractShoppingCart extends Collection implements IShoppingCart 
     * @param   \Unimake\ShoppingCart\Products\Product $item Produto
     * @return  void
     */
-   public function addProduct(IProduct $item) {
-      if($this->containsKey($item->getID())){
-         $this->increseProduct($item);
+   public function addProduct(IProduct $product) {
+      if($this->containsKey($product->getID())){
+         $this->increaseProduct($product);
       } else {
-         $this->add($item->getID(), $item);
+         $this->add($product->getID(), $product);
       }
    }
    
@@ -40,8 +40,8 @@ abstract class AbstractShoppingCart extends Collection implements IShoppingCart 
     * @param   \Unimake\ShoppingCart\Interfaces\IProduct $product
     * @return  void
     */
-   protected function increseProduct(IProduct $product){
-      if($this->containsKey($item->getID())){
+   protected function increaseProduct(IProduct $product){
+      if($this->containsKey($product->getID())){
          $quantity = $this->get($product->getID())->getQuantity();
          $quantity += $product->getQuantity();
          $product->setQuantity($quantity);
@@ -49,6 +49,10 @@ abstract class AbstractShoppingCart extends Collection implements IShoppingCart 
       }
    }
    
+   /**
+    * @brief   Conta a quantidade de itens no carrinho
+    * @return  int
+    */
    public function count(){
       $count = 0;
       
