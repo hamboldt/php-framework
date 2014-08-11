@@ -11,7 +11,7 @@ interface ICollection {
    /**
     * @brief   Adiciona um item na coleção
     * @param   int $key Chave de índice
-    * @param   var $item Item a ser adicionado
+    * @param   $item Item a ser adicionado
     * @return  void
     */
    public function add($key, $item);
@@ -32,7 +32,7 @@ interface ICollection {
    /**
     * @brief   Atualiza um valor no índice
     * @param   int $key Chave de índice
-    * @param   var $item Item a ser atualizado
+    * @param   $item Item a ser atualizado
     * @return  void
     */
    public function update($key, $item);
@@ -58,7 +58,7 @@ interface ICollection {
    
    /**
     * @brief   Verifica se existe um item armazenado
-    * @param   var $item Item a ser verificado
+    * @param   $item Item a ser verificado
     * @return  bool
     */
    public function containsValue($item);
