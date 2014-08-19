@@ -5,41 +5,83 @@ namespace Unimake\ShoppingCart;
 use Unimake\ShoppingCart\AbstractShoppingCart;
 
 /**
- * @brief   Venda
+ * @brief   Classe de venda
  * @author  Lucas A. de Araújo <lucas.andrade@unimake.com.br>
  */
 class Order extends AbstractShoppingCart implements Interfaces\IOrder {
    
-   protected $totalDiscount;
+   /**
+    * @brief   Coleção de descontos
+    * @var     \Unimake\ShoppingCart\Collections\DiscountCollection
+    */
+   protected $discountCollection;
    
    /**
-    * @brief   Define o valor do desconto total da compra
-    * @param   float $discount Valor total do desconto
+    * @brief   Valor total dos descontos aplicados na venda.
+    * @var     float
     */
-   public function setTotalDiscount($discount){
-      $this->totalDiscount = (float)$discount;
+   protected $discountedValute;
+   
+   /**
+    * @brief   Constroi o objeto venda.
+    */
+   public function __construct() {
+      $this->discountCollection = new Collections\DiscountCollection();
    }
    
    /**
-    * @brief   Retorna o valor total do desconto
-    * @return  float Valor total de desconto
+    * @brief   Adiciona um desconto à venda.
+    * @param   \Unimake\ShoppingCart\Interfaces\IDiscount $discount
+    * @return  void
     */
-   public function getTotalDiscount(){
-      return $this->totalDiscount;
+   public function addDiscount(Interfaces\IDiscount $discount) {
+      $this->discountCollection->add($discount->getID(), $discount);
    }
    
    /**
-    * @brief   Retorna o preço total da venda com descontos
-    * @return  float Prçeo total da venda com descontos
+    * @brief   Remove um disconto da lista de descontos.
+    * @param   \Unimake\ShoppingCart\Interfaces\IDiscount $discount
+    * @return  void
     */
-   public function getTotalPrice(){
-      $totalPrice = 0;
+   public function delDiscount(Interfaces\IDiscount $discount) {
+      $this->discountCollection->remove($discount->getID());
+   }
+   
+   /**
+    * @brief   Executa o melhor desconto da lista de desconto
+    * @return  void
+    */
+   public function applyGreaterDiscount(){
       
-      foreach($this->getAll() as $product){
-         $totalPrice += $product->getTotalPrice();
-      }
-      
-      return $totalPrice - $this->getTotalDiscount();
    }
    
+   /**
+    * @brief   Aplica desconto sobre desconto utilizando os descontos
+    * adicionados na lista de descontos da venda.
+    * @return  void
+    */
+   public function applyDiscountOverDiscount(){
+      
+   }
+   
+   /**
+    * @brief   Retorna o valor total dos descontos aplicados
+    * @return  float
+    */
+   public function getTotalDiscountedValue(){
+   }
+   
+   /**
+    * @brief   Retorna o valor total dos produtos sem desconto
+    * @return  float
+    */
+   public function getTotalProductsValue(){
+   }
+   
+   /**
+    * @brief   Retorna o valor total da venda [produtos+desconto]
+    * @return  floar
+    */
+   public function getTotalOrderValue(){
+   }
 }
