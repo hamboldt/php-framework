@@ -34,7 +34,7 @@ class Transaction implements ITransaction {
       curl_setopt_array($ch, array(
          CURLOPT_URL            => $request->getUrl(),
          CURLOPT_RETURNTRANSFER => true,
-         CURLOPT_HTTPGET        => true,
+         CURLOPT_HTTPGET        => $httpGet,
       ));
       
       $text = curl_exec($ch);
