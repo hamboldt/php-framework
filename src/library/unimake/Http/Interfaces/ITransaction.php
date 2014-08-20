@@ -11,6 +11,7 @@ interface ITransaction {
    /**
     * @brief   Define a requisição do
     * @param   \Unimake\Http\Interfaces\IRequest $request Requisiçao
+    * @return void
     */
    public function sendRequest(\Unimake\Http\Interfaces\IRequest $request);
    
