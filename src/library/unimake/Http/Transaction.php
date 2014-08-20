@@ -23,7 +23,8 @@ class Transaction implements ITransaction {
     * @param   \Unimake\Http\Interfaces\IRequest $request Requisiçao
     */
    public function sendRequest(IRequest $request){
-      $curlRequest = (new RequestCurlAdapter())->convertRequest($request);
+      $adapter = new RequestCurlAdapter();
+      $curlRequest = $adapter->convertRequest($request);
       $this->response = new Response();
       $this->response->setText(curl_exec($curlRequest));
    }
