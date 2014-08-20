@@ -33,4 +33,24 @@ interface IRequest {
     * @param   int $type Tipo da requisição
     */
    public function setType($type);
+   
+   /**
+    * @brief   Define um parâmetro para a requisição
+    * @param   string $name   Nome do parâmetro
+    * @param   string $value  Valor do parâmetro
+    */
+   public function setParam($name, $value);
+   
+   /**
+    * @brief   Retorna um parâmetro.
+    * @param   string $name   Nome do parâmetro
+    * @return  string
+    */
+   public function getParam($name);
+   
+   /**
+    * @brief   Retorna todos os parâmetros da requisição
+    * @return  string
+    */
+   public function getParameters();
 }

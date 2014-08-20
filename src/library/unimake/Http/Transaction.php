@@ -19,27 +19,42 @@ class Transaction implements ITransaction {
    private $response;
    
    /**
+    * @brief   Construtor da transação
+    */
+   public function __construct(){
+      $this->response = new Response();
+   }
+   
+   /**
     * @brief   Define a requisição do
     * @param   \Unimake\Http\Interfaces\IRequest $request Requisiçao
     */
    public function sendRequest(IRequest $request){
       
-      $httpGet = false;
+      $curlOptHttpGet = true;
+      $curlOptPost = false;
+      $curlGetParameters = '';
       
-      if($request->getType() === RequestTypes::GET)
-         $httpGet = true;
+      if($request->getType() === RequestTypes::POST){
+         $curlOptHttpGet = false;
+         $curlOptPost = true;
+      }
+      else if($request->getType() === RequestTypes::GET){
+         $curlGetParameters = http_build_query($request->getParameters());
+      }
       
       $ch = curl_init();
       
       curl_setopt_array($ch, array(
-         CURLOPT_URL            => $request->getUrl(),
+         CURLOPT_URL            => $request->getUrl() . '?' . $curlGetParameters,
          CURLOPT_RETURNTRANSFER => true,
-         CURLOPT_HTTPGET        => $httpGet,
+         CURLOPT_HTTPGET        => $curlOptHttpGet,
+         CURLOPT_POST           => $curlOptPost,
+         CURLOPT_POSTFIELDS     => $request->getParameters()
       ));
       
       $text = curl_exec($ch);
       
-      $this->response = new Response();
       $this->response->setText($text);
    }
    

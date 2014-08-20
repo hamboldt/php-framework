@@ -14,7 +14,13 @@ class Request implements IRequest {
     * @brief   URL aonde a requisição será feita
     * @var     string
     */
-   private $url;
+   private $url = '';
+   
+   /**
+    * @brief Parâmetros da requisição
+    * @var   array
+    */
+   private $parameters = array();
    
    /**
     * @brief   Tipo da requisição
@@ -58,5 +64,30 @@ class Request implements IRequest {
     */
    public function setType($type){
       $this->type = $type;
+   }
+   
+   /**
+    * @brief   Define um parâmetro para a requisição
+    * @param   string $name   Nome do parâmetro
+    * @param   string $value  Valor do parâmetro
+    */
+   public function setParam($name, $value) {
+      $this->parameters[$name] = $value;
+   }
+   
+   /**
+    * @brief   Retorna um parâmetro.
+    * @param   string $name   Nome do parâmetro
+    */
+   public function getParam($name){
+      return $this->parameters[$name];
+   }
+   
+   /**
+    * @brief   Retorna todos os parâmetros da requisição
+    * @return  string
+    */
+   public function getParameters(){
+      return $this->parameters;
    }
 }

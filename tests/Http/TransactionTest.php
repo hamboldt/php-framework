@@ -13,8 +13,9 @@ class TransactionTest extends \PHPUnit_Framework_TestCase {
    public function testTransaction(){
       
       $httpRequest = new Request();
-      $httpRequest->setUrl('http://unimake2.com.br/autoupdate/serversdownloadlist.php?t=full');
+      $httpRequest->setUrl('http://unimake2.com.br/autoupdate/serversdownloadlist.php');
       $httpRequest->setType(RequestTypes::GET);
+      $httpRequest->setParam('t', 'full');
       
       $httpTransaction = new Transaction();
       $httpTransaction->sendRequest($httpRequest);
