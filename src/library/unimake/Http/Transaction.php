@@ -31,31 +31,36 @@ class Transaction implements ITransaction {
     */
    public function sendRequest(IRequest $request){
       
-      $curlOptHttpGet = true;
-      $curlOptPost = false;
-      $curlGetParameters = '';
+      $curlOptions = array();
       
-      if($request->getType() === RequestTypes::POST){
-         $curlOptHttpGet = false;
-         $curlOptPost = true;
+      switch ($request->getType()){   
+         // Caso a requisição for do tipo GET
+         // http://pt.wikipedia.org/wiki/Hypertext_Transfer_Protocol#GET
+         case RequestTypes::GET :   
+            $curlOptions = array(
+               CURLOPT_URL            => $request->getUrl() . '?' . http_build_query($request->getParameters()),
+               CURLOPT_RETURNTRANSFER => true,
+               CURLOPT_HTTPGET        => true,
+            );
+            break;
+         
+         // Caso a requisição for do tipo POST
+         // http://pt.wikipedia.org/wiki/Hypertext_Transfer_Protocol#POST
+         case RequestTypes::POST :
+            $curlOptions = array(
+               CURLOPT_URL            => $request->getUrl(),
+               CURLOPT_RETURNTRANSFER => true,
+               CURLOPT_POST           => $curlOptPost,
+               CURLOPT_POSTFIELDS     => $request->getParameters()
+            );
+            break;
       }
-      else if($request->getType() === RequestTypes::GET){
-         $curlGetParameters = http_build_query($request->getParameters());
-      }
       
-      $ch = curl_init();
+      $curlRequest = curl_init();
+      curl_setopt_array($curlRequest, $curlOptions);
+      $curlResponse = curl_exec($curlRequest);
       
-      curl_setopt_array($ch, array(
-         CURLOPT_URL            => $request->getUrl() . '?' . $curlGetParameters,
-         CURLOPT_RETURNTRANSFER => true,
-         CURLOPT_HTTPGET        => $curlOptHttpGet,
-         CURLOPT_POST           => $curlOptPost,
-         CURLOPT_POSTFIELDS     => $request->getParameters()
-      ));
-      
-      $text = curl_exec($ch);
-      
-      $this->response->setText($text);
+      $this->response->setText($curlResponse);
    }
    
    /**
