@@ -12,3 +12,4 @@ require_once $dir . '/src/library/unimake/Http/Enuns/RequestTypes.php';
 require_once $dir . '/src/library/unimake/Http/Transaction.php';
 require_once $dir . '/src/library/unimake/Http/Request.php';
 require_once $dir . '/src/library/unimake/Http/Response.php';
+require_once $dir . '/src/library/unimake/Http/RequestCurlAdapter.php';

@@ -19,43 +19,13 @@ class Transaction implements ITransaction {
    private $response;
    
    /**
-    * @brief   Construtor da transação
-    */
-   public function __construct(){
-      $this->response = new Response();
-   }
-   
-   /**
     * @brief   Define a requisição do
     * @param   \Unimake\Http\Interfaces\IRequest $request Requisiçao
     */
    public function sendRequest(IRequest $request){
-      
-      $curlOptions = array();
-      $curlOptions[CURLOPT_RETURNTRANSFER] = true;
-      $curlOptions[CURLOPT_URL] = $request->getUrl();
-      
-      switch ($request->getType()){   
-         // Caso a requisição for do tipo GET
-         // http://pt.wikipedia.org/wiki/Hypertext_Transfer_Protocol#GET
-         case RequestTypes::GET :
-            $curlOptions[CURLOPT_HTTPGET] = true;
-            $curlOptions[CURLOPT_URL] = $request->getUrl() . '?' . http_build_query($request->getParameters());
-            break;
-         
-         // Caso a requisição for do tipo POST
-         // http://pt.wikipedia.org/wiki/Hypertext_Transfer_Protocol#POST
-         case RequestTypes::POST :
-            $curlOptions[CURLOPT_POST] = true;
-            $curlOptions[CURLOPT_POSTFIELDS] = $request->getParameters();
-            break;
-      }
-      
-      $curlRequest = curl_init();
-      curl_setopt_array($curlRequest, $curlOptions);
-      $curlResponse = curl_exec($curlRequest);
-      
-      $this->response->setText($curlResponse);
+      $curlRequest = (new RequestCurlAdapter())->convertRequest($request);
+      $this->response = new Response();
+      $this->response->setText(curl_exec($curlRequest));
    }
    
    /**
