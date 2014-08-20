@@ -1,0 +1,7 @@
+{
+    "name": "unimake/php-framework",
+    "description": "Micro framework da Unimake Software produzido a critérios funcionais e de conhecimento.",
+    "require": {
+        "php": ">=5.3.0"
+    }
+}
