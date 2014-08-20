@@ -31,15 +31,11 @@ class RequestCurlAdapter {
       $curlOptions[CURLOPT_URL] = $request->getUrl();
       
       switch ($request->getType()){   
-         // Caso a requisição for do tipo GET
-         // http://pt.wikipedia.org/wiki/Hypertext_Transfer_Protocol#GET
          case RequestTypes::GET :
             $curlOptions[CURLOPT_HTTPGET] = true;
             $curlOptions[CURLOPT_URL] = $request->getUrl() . '?' . http_build_query($request->getParameters());
             break;
          
-         // Caso a requisição for do tipo POST
-         // http://pt.wikipedia.org/wiki/Hypertext_Transfer_Protocol#POST
          case RequestTypes::POST :
             $curlOptions[CURLOPT_POST] = true;
             $curlOptions[CURLOPT_POSTFIELDS] = $request->getParameters();
