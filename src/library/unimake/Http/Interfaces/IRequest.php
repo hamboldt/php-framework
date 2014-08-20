@@ -2,8 +2,6 @@
 
 namespace Unimake\Http\Interfaces;
 
-use Unimake\Http\Interfaces\IResponse;
-
 /**
  * @brief   Interface da requisição
  * @author  Lucas A. de Araújo <lucas.andrade@unimake.com.br>
@@ -19,6 +17,7 @@ interface IRequest {
    /**
     * @brief   Define a URL da requisição
     * @param   string $url URL da requisição
+    * @return void
     */
    public function setUrl($url);
    
@@ -31,6 +30,7 @@ interface IRequest {
    /**
     * @brief   Define o tipo da requisição
     * @param   int $type Tipo da requisição
+    * @return void
     */
    public function setType($type);
    
@@ -38,6 +38,7 @@ interface IRequest {
     * @brief   Define um parâmetro para a requisição
     * @param   string $name   Nome do parâmetro
     * @param   string $value  Valor do parâmetro
+    * @return void
     */
    public function setParam($name, $value);
    

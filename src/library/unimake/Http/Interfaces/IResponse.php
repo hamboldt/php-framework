@@ -17,6 +17,7 @@ interface IResponse {
    /**
     * @brief   Define o texto de resposta.
     * @param   string $text Texto de resposta
+    * @return void
     */
    public function setText($text);
 }

@@ -49,7 +49,7 @@ interface IOrder extends IShoppingCart {
    
    /**
     * @brief   Retorna o valor total da venda [produtos+desconto]
-    * @return  floar
+    * @return  \Unimake\ShoppingCart\floar|null
     */
    public function getTotalOrderValue();
    
