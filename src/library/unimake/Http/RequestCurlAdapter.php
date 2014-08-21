@@ -26,9 +26,11 @@ class RequestCurlAdapter {
     * @return  array
     */
    private function adaptedOptions(Interfaces\IRequest $request){
-      $curlOptions = array();
-      $curlOptions[CURLOPT_RETURNTRANSFER] = true;
-      $curlOptions[CURLOPT_URL] = $request->getUrl();
+      $curlOptions = array(
+         CURLOPT_URL                => $request->getUrl(),
+         CURLOPT_RETURNTRANSFER     => true,
+         CURLOPT_CONNECTTIMEOUT_MS  => 2000,
+      );
       
       switch ($request->getType()){   
          case RequestTypes::GET :

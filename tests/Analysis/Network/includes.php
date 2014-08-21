@@ -14,3 +14,4 @@ require_once $dir . '/src/library/unimake/Http/Request.php';
 require_once $dir . '/src/library/unimake/Http/Response.php';
 require_once $dir . '/src/library/unimake/Http/RequestCurlAdapter.php';
 require_once $dir . '/src/library/unimake/Http/Exceptions/ConnectionTimedOutException.php';
+require_once $dir . '/src/library/unimake/Analysis/Network/WebsiteAnalysis.php';

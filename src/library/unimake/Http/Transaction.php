@@ -5,6 +5,7 @@ namespace Unimake\Http;
 use Unimake\Http\Interfaces\IRequest;
 use Unimake\Http\Interfaces\IResponse;
 use Unimake\Http\Interfaces\ITransaction;
+use Unimake\Http\Exceptions\ConnectionTimedOutException;
 
 /**
  * @brief   Transação Http
@@ -24,9 +25,17 @@ class Transaction implements ITransaction {
     */
    public function sendRequest(IRequest $request){
       $adapter = new RequestCurlAdapter();
+      
       $curlRequest = $adapter->convertRequest($request);
+      $curlResponse = curl_exec($curlRequest);
+      
+      switch(curl_errno($curlRequest)){
+         case 28: throw new ConnectionTimedOutException(); break;
+      }
+         
+      
       $this->response = new Response();
-      $this->response->setText(curl_exec($curlRequest));
+      $this->response->setText($curlResponse);
    }
    
    /**
