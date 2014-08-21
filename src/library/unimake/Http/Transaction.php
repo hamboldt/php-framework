@@ -30,7 +30,7 @@ class Transaction implements ITransaction {
       $curlResponse = curl_exec($curlRequest);
       
       switch(curl_errno($curlRequest)){
-         case 28: throw new ConnectionTimedOutException(); break;
+         case 28: throw new ConnectionTimedOutException();
       }
          
       
