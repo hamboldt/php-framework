@@ -51,7 +51,7 @@ interface IRequest {
    
    /**
     * @brief   Retorna todos os parâmetros da requisição
-    * @return  string
+    * @return  array
     */
    public function getParameters();
 }
