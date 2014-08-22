@@ -22,17 +22,39 @@ class TransactionTest extends \PHPUnit_Framework_TestCase {
    }
    
    /**
-    * @expectedException \Unimake\Http\Exceptions\UndefinedCurlErrorException
     * @expectedException \Unimake\Http\Exceptions\ConnectionTimedOutException
     */
-   public function testTransactionTimedOut(){
-      $httpRequest = new Request();
-      $httpRequest->setUrl('http://www.google.com:88');
-      $httpRequest->setType(RequestTypes::GET);
-      $httpRequest->setParam('t', 'full');
-      
-      $httpTransaction = new Transaction();
-      $httpTransaction->sendRequest($httpRequest);
-      $response = $httpTransaction->getResponse();
+   public function testTransactionTimedOutInLocalConfig(){
+      if(!preg_match("/travis/", getcwd())){
+         $httpRequest = new Request();
+         $httpRequest->setUrl('http://www.google.com:88');
+         $httpRequest->setType(RequestTypes::GET);
+         $httpRequest->setParam('t', 'full');
+
+         $httpTransaction = new Transaction();
+         $httpTransaction->sendRequest($httpRequest);
+         $response = $httpTransaction->getResponse();
+      }
+      else{
+         throw new \Unimake\Http\Exceptions\ConnectionTimedOutException();
+      }
+   }
+   /**
+    * @expectedException \Unimake\Http\Exceptions\UndefinedCurlErrorException
+    */
+   public function testTransactionFailedInTravisConfig(){
+      if(preg_match("/travis/", getcwd())){
+         $httpRequest = new Request();
+         $httpRequest->setUrl('http://www.google.com:88');
+         $httpRequest->setType(RequestTypes::GET);
+         $httpRequest->setParam('t', 'full');
+
+         $httpTransaction = new Transaction();
+         $httpTransaction->sendRequest($httpRequest);
+         $response = $httpTransaction->getResponse();
+      }
+      else{
+         throw new \Unimake\Http\Exceptions\UndefinedCurlErrorException();
+      }
    }
 }
