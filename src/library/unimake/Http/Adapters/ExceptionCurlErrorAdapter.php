@@ -18,11 +18,11 @@ class ExceptionCurlErrorAdaper {
     * @throws  Exception
     */
    public static function throwCurlException($curlResource){
-      var_dump(curl_errno($curlResource));
       switch(curl_errno($curlResource)){
          case 01: throw new UnsuportedProtocolException(); break;
          case 03: throw new IncorrectUrlFormatException(); break;
          case 28: throw new ConnectionTimedOutException(); break;
+         default: throw new UndefinedCurlErrorException(curl_error($curlResource));
       }
    }
    

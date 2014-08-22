@@ -18,5 +18,6 @@ require_once $dir . '/src/library/unimake/Http/Exceptions/ConnectionTimedOutExce
 require_once $dir . '/src/library/unimake/Http/Exceptions/IncorrectUrlFormatException.php';
 require_once $dir . '/src/library/unimake/Http/Exceptions/UnsuportedProtocolException.php';
 require_once $dir . '/src/library/unimake/Http/Resources/ExceptionMessage.php';
+require_once $dir . '/src/library/unimake/Http/Exceptions/UndefinedCurlErrorException.php';
 
 require_once $dir . '/src/library/unimake/Analysis/Network/WebsiteAnalysis.php';

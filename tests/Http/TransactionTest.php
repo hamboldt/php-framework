@@ -22,6 +22,7 @@ class TransactionTest extends \PHPUnit_Framework_TestCase {
    }
    
    /**
+    * @expectedException \Unimake\Http\Exceptions\UndefinedCurlErrorException
     * @expectedException \Unimake\Http\Exceptions\ConnectionTimedOutException
     */
    public function testTransactionTimedOut(){
