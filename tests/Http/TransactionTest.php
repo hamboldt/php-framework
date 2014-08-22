@@ -35,9 +35,6 @@ class TransactionTest extends \PHPUnit_Framework_TestCase {
          $httpTransaction->sendRequest($httpRequest);
          $response = $httpTransaction->getResponse();
       }
-      else{
-         throw new \Unimake\Http\Exceptions\ConnectionTimedOutException();
-      }
    }
    /**
     * @expectedException \Unimake\Http\Exceptions\UndefinedCurlErrorException
