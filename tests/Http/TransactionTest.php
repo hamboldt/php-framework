@@ -35,23 +35,8 @@ class TransactionTest extends \PHPUnit_Framework_TestCase {
          $httpTransaction->sendRequest($httpRequest);
          $response = $httpTransaction->getResponse();
       }
-   }
-   /**
-    * @expectedException \Unimake\Http\Exceptions\UndefinedCurlErrorException
-    */
-   public function testTransactionFailedInTravisConfig(){
-      if(preg_match("/travis/", getcwd())){
-         $httpRequest = new Request();
-         $httpRequest->setUrl('http://www.google.com:88');
-         $httpRequest->setType(RequestTypes::GET);
-         $httpRequest->setParam('t', 'full');
-
-         $httpTransaction = new Transaction();
-         $httpTransaction->sendRequest($httpRequest);
-         $response = $httpTransaction->getResponse();
-      }
       else{
-         throw new \Unimake\Http\Exceptions\UndefinedCurlErrorException();
+         throw new \Unimake\Http\Exceptions\ConnectionTimedOutException();
       }
    }
 }
