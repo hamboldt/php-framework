@@ -4,7 +4,6 @@ namespace Unimake\Analysys\Network;
 
 use Unimake\Http\Transaction;
 use Unimake\Http\Request;
-use Unimake\Http\Response;
 use Unimake\Http\RequestTypes;
 use Unimake\Http\Exceptions\ConnectionTimedOutException;
 
@@ -16,8 +15,7 @@ class WebsiteAnalysis {
    
    /**
     * @brief   Verifica se um servidor está disponível
-    * @param   string $dns
-    * @return  boold
+    * @return  boolean
     */
    public static function available($url){
       

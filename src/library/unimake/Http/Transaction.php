@@ -5,7 +5,6 @@ namespace Unimake\Http;
 use Unimake\Http\Interfaces\IRequest;
 use Unimake\Http\Interfaces\IResponse;
 use Unimake\Http\Interfaces\ITransaction;
-use Unimake\Http\Exceptions\ConnectionTimedOutException;
 use Unimake\Http\Adapters\RequestCurlAdapter;
 use Unimake\Http\Adapters\ExceptionCurlErrorAdaper;
 
