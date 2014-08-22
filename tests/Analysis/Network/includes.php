@@ -12,6 +12,11 @@ require_once $dir . '/src/library/unimake/Http/Enuns/RequestTypes.php';
 require_once $dir . '/src/library/unimake/Http/Transaction.php';
 require_once $dir . '/src/library/unimake/Http/Request.php';
 require_once $dir . '/src/library/unimake/Http/Response.php';
-require_once $dir . '/src/library/unimake/Http/RequestCurlAdapter.php';
+require_once $dir . '/src/library/unimake/Http/Adapters/RequestCurlAdapter.php';
+require_once $dir . '/src/library/unimake/Http/Adapters/ExceptionCurlErrorAdapter.php';
 require_once $dir . '/src/library/unimake/Http/Exceptions/ConnectionTimedOutException.php';
+require_once $dir . '/src/library/unimake/Http/Exceptions/IncorrectUrlFormatException.php';
+require_once $dir . '/src/library/unimake/Http/Exceptions/UnsuportedProtocolException.php';
+require_once $dir . '/src/library/unimake/Http/Resources/ExceptionMessage.php';
+
 require_once $dir . '/src/library/unimake/Analysis/Network/WebsiteAnalysis.php';

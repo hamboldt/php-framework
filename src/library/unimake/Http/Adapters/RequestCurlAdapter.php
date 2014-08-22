@@ -1,6 +1,9 @@
 <?php
 
-namespace Unimake\Http;
+namespace Unimake\Http\Adapters;
+
+use Unimake\Http\Interfaces\IRequest;
+use Unimake\Http\RequestTypes;
 
 /**
  * @brief   Responsável por converter uma requisição
@@ -13,7 +16,7 @@ class RequestCurlAdapter {
     * @brief   Converte uma requisição
     * @return  resource a cURL handle on success, <b>FALSE</b> on errors.
     */
-   public function convertRequest(Interfaces\IRequest $request){
+   public function convertRequest(IRequest $request){
       $curlRequest = curl_init();
       curl_setopt_array($curlRequest, $this->adaptedOptions($request));
       
@@ -25,7 +28,7 @@ class RequestCurlAdapter {
     * @param   \Unimake\Http\Interfaces\IRequest $request
     * @return  array
     */
-   private function adaptedOptions(Interfaces\IRequest $request){
+   private function adaptedOptions(IRequest $request){
       $curlOptions = array(
          CURLOPT_URL                => $request->getUrl(),
          CURLOPT_RETURNTRANSFER     => true,
