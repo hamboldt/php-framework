@@ -32,7 +32,8 @@ class RequestCurlAdapter {
       $curlOptions = array(
          CURLOPT_URL                => $request->getUrl(),
          CURLOPT_RETURNTRANSFER     => true,
-         CURLOPT_CONNECTTIMEOUT_MS  => 2000,
+         CURLOPT_CONNECTTIMEOUT_MS  => 1000,
+         CURLOPT_TIMEOUT_MS         => 1000,
       );
       
       switch ($request->getType()){   
