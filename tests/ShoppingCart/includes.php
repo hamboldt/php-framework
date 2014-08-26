@@ -17,3 +17,6 @@ require_once $dir . '/src/library/unimake/ShoppingCart/Models/Products/Product.p
 require_once $dir . '/src/library/unimake/ShoppingCart/Models/Products/ProductFactory.php';
 require_once $dir . '/src/library/unimake/ShoppingCart/Adapters/OrderAdapter.php';
 require_once $dir . '/src/library/unimake/ShoppingCart/Collections/DiscountCollection.php';
+require_once $dir . '/src/library/unimake/ShoppingCart/Interfaces/Models/Discounts/IDiscount.php';
+require_once $dir . '/src/library/unimake/ShoppingCart/Abstract/Models/Discounts/AbstractDiscount.php';
+require_once $dir . '/src/library/unimake/ShoppingCart/Models/Discounts/Discount.php';

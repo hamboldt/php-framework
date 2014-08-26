@@ -22,20 +22,7 @@ interface IOrder extends IShoppingCart {
     */
    public function delDiscount(IDiscount $discount);
    
-   /**
-    * @brief   Executa o melhor desconto da lista de desconto
-    * @return  void
-    */
-   public function applyGreaterDiscount();
-   
-   /**
-    * @brief   Aplica desconto sobre desconto utilizando os descontos
-    * adicionados na lista de descontos da venda.
-    * @return  void
-    */
-   public function applyDiscountOverDiscount();
-   
-   /**
+   /*
     * @brief   Retorna o valor total dos descontos aplicados
     * @return  float
     */

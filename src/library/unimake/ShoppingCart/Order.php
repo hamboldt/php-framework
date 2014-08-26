@@ -17,12 +17,6 @@ class Order extends AbstractShoppingCart implements Interfaces\IOrder {
    protected $discountCollection;
    
    /**
-    * @brief   Valor total dos descontos aplicados na venda.
-    * @var     float
-    */
-   protected $discountedValute;
-   
-   /**
     * @brief   Constroi o objeto venda.
     */
    public function __construct() {
@@ -48,27 +42,17 @@ class Order extends AbstractShoppingCart implements Interfaces\IOrder {
    }
    
    /**
-    * @brief   Executa o melhor desconto da lista de desconto
-    * @return  void
+    * @brief   Retorna o valor total descontado
+    * @return  float Valor total descontado
     */
-   public function applyGreaterDiscount(){
+   public function getTotalDiscountedValue() {
+      $total = 0.00;
       
-   }
-   
-   /**
-    * @brief   Aplica desconto sobre desconto utilizando os descontos
-    * adicionados na lista de descontos da venda.
-    * @return  void
-    */
-   public function applyDiscountOverDiscount(){
-      
-   }
-   
-   /**
-    * @brief   Retorna o valor total dos descontos aplicados
-    * @return  float
-    */
-   public function getTotalDiscountedValue(){
+      if(!$this->discountCollection->isEmpty())
+         foreach($this->discountCollection->getAll() as $discount)
+            $total += $discount->getDiscountValue();
+            
+      return $total;
    }
    
    /**
@@ -76,12 +60,20 @@ class Order extends AbstractShoppingCart implements Interfaces\IOrder {
     * @return  float
     */
    public function getTotalProductsValue(){
+      $total = 0.0;
+      
+      if($this->count() > 0)
+         foreach($this->getAll() as $product)
+            $total += $product->getTotalPrice();
+      
+      return $total;
    }
    
    /**
     * @brief   Retorna o valor total da venda [produtos+desconto]
-    * @return  floar
+    * @return  float
     */
    public function getTotalOrderValue(){
+      return $this->getTotalProductsValue() - $this->getTotalDiscountedValue();
    }
 }
