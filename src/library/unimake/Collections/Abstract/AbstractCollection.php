@@ -15,7 +15,6 @@ abstract class AbstractCollection implements ICollection {
    /**
     * @brief   Adiciona um item na coleção
     * @param   int $key Chave de índice
-    * @param   $item Item a ser adicionado
     */
    public function add($key, $item){
       if(!$this->containsKey($key))
