@@ -16,7 +16,7 @@ class AbstractDiscount implements IDiscount {
    
    /**
     * @brief   Retorna o desconto
-    * @return  int
+    * @return  double
     */
    public function getID(){
       return $this->id;

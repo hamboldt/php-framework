@@ -17,6 +17,7 @@ interface IDiscount {
    /**
     * @brief   Define a ID do desconto
     * @param   int $id
+    * @return void
     */
    public function setID($id);
    
